@@ -1,6 +1,6 @@
 # rfc6238-based-totp-client
 
-> rfc6238-based-totp-client
+> My perfect Nuxt.js project
 
 ## Build Setup
 
