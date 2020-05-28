@@ -61,11 +61,15 @@ export default {
     components: {
         RecipeCard
     },
-    asyncData(context) {
-        let data = sampleData;
-        return {
-            recipes: data
-        };
+    async asyncData({ $axios, params }) {
+      try {
+        // let recipes = await sampleData;
+        let recipes = await $axios.$get(`/totps/`);
+        return { recipes };
+      } catch (e) {
+        console.log(e);
+        return { recipes: [] };
+      }
     },
     data() {
         return {
@@ -73,8 +77,14 @@ export default {
         };
     },
     methods: {
-        deleteRecipe(recipe_id) {
-            console.log(deleted `${recipe.id}`)
+        async deleteRecipe(recipe_id) {
+          try {
+            await this.$axios.$delete(`/totps/${recipe_id}/`);    
+            let newRecipes = await this.$axios.$get("/totps");
+            this.recipes = newRecipes;
+          } catch(e) {
+            console.log(e);
+          }
         }
     }
 };
