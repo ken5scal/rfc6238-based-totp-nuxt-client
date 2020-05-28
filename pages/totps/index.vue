@@ -7,9 +7,9 @@
           <nuxt-link to="/recipes/add" class="btn btn-info">Add Recipe</nuxt-link>
         </div>
       </div>
-      <template v-for="recipe in recipes">
-        <div :key="recipe.id" class="col-lg-3 col-md-4 col-sm-6 mb-4">
-          <recipe-card :onDelete="deleteRecipe" :recipe="recipe"></recipe-card>
+      <template v-for="totp in totps">
+        <div :key="totp.id" class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <recipe-card :onDelete="deleteRecipe" :recipe="totp"></recipe-card>
         </div>
       </template>
     </div>
@@ -64,16 +64,16 @@ export default {
     async asyncData({ $axios, params }) {
       try {
         // let recipes = await sampleData;
-        let recipes = await $axios.$get(`/totps/`);
-        return { recipes };
+        let totps = await $axios.$get(`/totps/`);
+        return { totps };
       } catch (e) {
         console.log(e);
-        return { recipes: [] };
+        return { totps: [] };
       }
     },
     data() {
         return {
-            recipes: []
+            totps: []
         };
     },
     methods: {
