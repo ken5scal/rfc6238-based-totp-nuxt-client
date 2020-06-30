@@ -20,3 +20,4 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+* https://www.digitalocean.com/community/tutorials/how-to-build-a-universal-application-with-nuxt-js-and-django
